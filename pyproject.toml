@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "campaign-data-processing"
+version = "0.1.0"
+description = "Campaign Data Processing with PySpark"
+authors = ["Christopher Dambamuromo <chridam@gmail.com>"]
+license = "GNU GENERAL PUBLIC LICENSE"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "Version 3, 29 June 2007"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
