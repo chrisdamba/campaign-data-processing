@@ -7,8 +7,9 @@ license = "GNU GENERAL PUBLIC LICENSE"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "Version 3, 29 June 2007"
-
+python = "^3.9"
+pyspark = "^3.5.1"
+pytest = "^8.1.1"
 
 [build-system]
 requires = ["poetry-core"]
