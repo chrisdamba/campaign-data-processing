@@ -13,21 +13,30 @@ resource "aws_emr_cluster" "campaign_emr_cluster" {
   name          = var.emr_cluster_name
   release_label = "emr-6.3.0"
   applications  = ["Spark"]
+
   ec2_attributes {
     instance_profile = "EMR_EC2_DefaultRole"
-    subnet_id        = "subnet-123456" # Replace with your subnet ID
+    subnet_id        = "subnet-123456"  # Replace with your actual subnet ID
   }
 
-  master_instance_type = var.instance_type
-  core_instance_type   = var.instance_type
-  core_instance_count  = var.instance_count
-  service_role         = "EMR_DefaultRole"
+  master_instance_group {
+    instance_type  = var.instance_type
+    instance_count = 1  # Usually, there's only 1 master node
+  }
+
+  core_instance_group {
+    instance_type  = var.instance_type
+    instance_count = var.instance_count  # Number of core instances
+  }
+
+  service_role = "EMR_DefaultRole"
 
   tags = {
     Name    = "${var.project}-EMR"
     Project = var.project
   }
 }
+
 
 resource "aws_iam_role" "spark_job_role" {
   name = "${var.project}-spark-job-role"
